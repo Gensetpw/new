@@ -320,6 +320,26 @@ wget -O /etc/issue.net "https://raw.githubusercontent.com/warouhh/new/main/insta
 #install bbr dan optimasi kernel
 wget https://raw.githubusercontent.com/warouhh/new/main/install/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
+
+#run_ip
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2095 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2095 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880-j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2052 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2052 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 9443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 9443 -j ACCEPT
+iptables-save > /etc/iptables.up.rules
+iptables-restore -t < /etc/iptables.up.rules
+netfilter-persistent save
+netfilter-persistent reload
 # blokir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
 iptables -A FORWARD -m string --string "announce_peer" --algo bm -j DROP
