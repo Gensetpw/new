@@ -240,7 +240,7 @@ connect = 127.0.0.1:109
 #accept = 2083
 #connect = 700
 [ws-stunnel]
-accept = 2053
+accept = 2096
 connect = 700
 
 [openvpn]
@@ -326,8 +326,6 @@ iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2095 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2095 -j ACCEPT
-#iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2096 -j ACCEPT
-#iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2096 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
