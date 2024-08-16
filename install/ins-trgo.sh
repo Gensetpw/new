@@ -103,10 +103,10 @@ $uuid
 END
 
 # restart
-iptables-save > /etc/iptables.up.rules
-iptables-restore -t < /etc/iptables.up.rules
-netfilter-persistent save
-netfilter-persistent reload
+#iptables-save > /etc/iptables.up.rules
+#iptables-restore -t < /etc/iptables.up.rules
+#netfilter-persistent save
+#netfilter-persistent reload
 systemctl daemon-reload
 systemctl stop trojan-go
 systemctl start trojan-go
