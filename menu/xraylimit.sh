@@ -642,4 +642,3 @@ fi
 vmess
 vless
 trojan
-trojan-go
