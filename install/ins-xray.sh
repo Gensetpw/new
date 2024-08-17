@@ -488,7 +488,7 @@ END
 # Installing Trojan Go Service
 cat > /etc/systemd/system/trojan-go.service << END
 [Unit]
-Description=Trojan-Go Service Mod By SF
+Description=Trojan-Go Service Mod By CLOUDVPN 
 Documentation=nekopoi.care
 After=network.target nss-lookup.target
 
@@ -516,6 +516,8 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:80;
              listen 2095;
              listen [::]:2095;
+             listen 8080;
+             listen [::]:8080;
 #             listen 2096;
 #             listen [::]:2096;
              listen 443 ssl http2 reuseport;
