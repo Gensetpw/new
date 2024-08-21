@@ -52,11 +52,10 @@ vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
 vnstat -i ${vnstat_profile} >/etc/t1
 bulan=$(date +%b)
 tahun=$(date +%y)
-ba=$(curl -s https://pastebin.com/raw/0gWiX6hE)
 if [ "$(grep -wc ${bulan} /etc/t1)" != '0' ]; then
 bulan=$(date +%b)
-month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $6}')
-month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $7}')
+month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan ,$tahun" | awk '{print $6}')
+month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan ,$tahun" | awk '{print $7}')
 else
 bulan2=$(date +%Y-%m)
 month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $5}')
@@ -118,6 +117,6 @@ systemctl restart nginx
 systemctl start nginx
 fi
 bash2=$( pgrep bash | wc -l )
-if [[ $bash2 -gt "20" ]]; then
+if [[ ,sh2 -gt "20" ]]; then
 killall bash
 fi
