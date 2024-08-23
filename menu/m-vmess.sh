@@ -79,8 +79,11 @@ while [ $sec -gt 0 ]; do
   sleep 1
   sec=$(($sec - 1))
 done
+clear
+echo ""
 echo -e "\e[1;32m   input dependecies account $user\e[0m\n"
 echo -e "\033[0;33m .::.  Script by CLOUDVPN  .::.\e[0m\n"
+echo ""
 until [[ $masaaktif =~ ^[0-9]+$ ]]; do
 read -p "Expired (hari): " masaaktif
 done
