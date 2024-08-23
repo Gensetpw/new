@@ -10,8 +10,8 @@ export COLBG1="$(cat /etc/rmbl/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 
 WH='\033[1;37m'
 tram=$( free -h | awk 'NR==2 {print $2}' )
 uram=$( free -h | awk 'NR==2 {print $3}' )
-ISP=$(cat /etc/xray/isp)
-CITY=$(cat /etc/xray/city)
+ISP=$(cat /usr/local/etc/datavps/org )
+CITY=$(cat /usr/local/etc/datavps/city )
 author=$(cat /etc/profil)
 DAY=$(date +%A)
 DATE=$(date +%m/%d/%Y)
