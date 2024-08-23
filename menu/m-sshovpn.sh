@@ -77,6 +77,19 @@ usernew
 fi
 done
 read -p "Password : " Pass
+sec=3
+echo ""
+spinner=(⣻ ⢿ ⡿ ⣟ ⣯ ⣷)
+while [ $sec -gt 0 ]; do
+  echo -ne "\e[33m ${spinner[sec]} Setting up a Premium Account $sec seconds...\r"
+  sleep 1
+  sec=$(($sec - 1))
+done
+clear
+echo ""
+echo -e "\e[1;32m   input dependecies account $user\e[0m\n"
+echo -e "\033[0;33m .::.  Script by CLOUDVPN  .::.\e[0m\n"
+echo ""
 until [[ $masaaktif =~ ^[0-9]+$ ]]; do
 read -p "Expired (hari): " masaaktif
 done
