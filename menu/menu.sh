@@ -330,7 +330,7 @@ echo -e "    $COLOR1╰═══════════════════
 #printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " TROJAN-GO   =" "$jumlah_trgo" "ACCOUNT "
 #echo -e "      $COLOR1╰═════════════════════════════════════════════╯${NC}"
 echo -e " $COLOR1╭═════════════════════ • ${WH}LIST MENU${NC}${COLOR1} • ════════════════════╮${NC}"
-echo -e " $COLOR1│$NC ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS    ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}BOT PANEL (OFF)  ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"
+echo -e " $COLOR1│$NC ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS    ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}BOT PANEL  ${WH}[${COLOR1}lost${WH}] $COLOR1│${NC}"
 echo -e " $COLOR1│$NC ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}VMESS     ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}BOT NOTIF  ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"    
 echo -e " $COLOR1│$NC ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS     ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}UPDATE     ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"   
 echo -e " $COLOR1│$NC ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN    ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}SYSTEM     ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}" 
