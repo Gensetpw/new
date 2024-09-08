@@ -12,11 +12,11 @@ cd /usr/bin
 wget -O backup "https://raw.githubusercontent.com/warouhh/new/main/menu/backup.sh"
 wget -O restore "https://raw.githubusercontent.com/warouhh/new/main/menu/restore.sh"
 wget -O cleaner "https://raw.githubusercontent.com/warouhh/new/main/install/cleaner.sh"
-#wget -O xp "https://raw.githubusercontent.com/warouhh/new/main/install/xp.sh"
-chmod +x backup
-chmod +x restore
-chmod +x cleaner
-#chmod +x /usr/bin/xp
+wget -O xp "https://raw.githubusercontent.com/warouhh/new/main/install/xp.sh"
+chmod +x /usr/bin/backup
+chmod +x /usr/bin/restore
+chmod +x /usr/bin/cleaner
+chmod +x /usr/bin/xp
 cd
 #if [ ! -f "/etc/cron.d/cleaner" ]; then
 cat> /etc/cron.d/cleaner << END
@@ -29,22 +29,22 @@ END
 
 
 #if [ ! -f "/etc/cron.d/xp_otm" ]; then
-#cat> /etc/cron.d/xp_otm << END
-#SHELL=/bin/sh
-#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-#0 0 * * * root /usr/bin/xp
-#END
+cat> /etc/cron.d/xp_otm << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 0 * * * root /usr/bin/xp
+END
 #fi
-#cat > /home/re_otm <<-END
-#7
-#END
+cat > /home/re_otm <<-END
+7
+END
 
 #if [ ! -f "/etc/cron.d/bckp_otm" ]; then
-#cat> /etc/cron.d/bckp_otm << END
-#SHELL=/bin/sh
-#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-#0 5 * * * root /usr/bin/bottelegram
-#END
+cat> /etc/cron.d/bckp_otm << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 5 * * * root /usr/bin/bottelegram
+END
 #fi
 
 service cron restart > /dev/null 2>&1
