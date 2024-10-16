@@ -13,10 +13,12 @@ wget -O backup "https://raw.githubusercontent.com/warouhh/new/main/menu/backup.s
 wget -O restore "https://raw.githubusercontent.com/warouhh/new/main/menu/restore.sh"
 wget -O cleaner "https://raw.githubusercontent.com/warouhh/new/main/install/cleaner.sh"
 wget -O xp "https://raw.githubusercontent.com/warouhh/new/main/install/xp.sh"
+wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/Agunxzzz/XrayCol/main/minacantik/clearlog.sh"
 chmod +x /usr/bin/backup
 chmod +x /usr/bin/restore
 chmod +x /usr/bin/cleaner
 chmod +x /usr/bin/xp
+chmod +x /usr/bin/clearlog
 cd
 #if [ ! -f "/etc/cron.d/cleaner" ]; then
 cat> /etc/cron.d/cleaner << END
