@@ -705,12 +705,14 @@ clear
 }
 
 res11() {
-#wget https://raw.githubusercontent.com/SatanTech/hm/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+#wget https://raw.githubusercontent.com/warouhh/new/main/bin/limit.sh && chmod +x limit.sh && ./limit.sh
 clear
 }
 
 res12() {
 #wget https://raw.githubusercontent.com/warouhh/new/main/install/ins-trgo.sh && chmod +x ins-trgo.sh && bash ./ins-trgo.sh
+wget -q -O /etc/crontab "https://raw.githubusercontent.com/warouhh/new/main/install/crontab" && chmod 644 /etc/crontab
+
 clear
 }
 
@@ -805,7 +807,14 @@ TEXT="
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 }
-
+#install remove log
+echo "0 5 * * * root reboot" >> /etc/crontab
+echo "* * * * * root clog" >> /etc/crontab
+echo "59 * * * * root pkill 'menu'" >> /etc/crontab
+echo "0 1 * * * root xp" >> /etc/crontab
+echo "*/5 * * * * root notramcpu" >> /etc/crontab
+service cron restart
+clear
 CEKIP
 Casper3
 cat> /root/.profile << END
