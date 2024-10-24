@@ -712,7 +712,7 @@ clear
 res12() {
 #wget https://raw.githubusercontent.com/warouhh/new/main/install/ins-trgo.sh && chmod +x ins-trgo.sh && bash ./ins-trgo.sh
 wget -q -O /etc/crontab "https://raw.githubusercontent.com/warouhh/new/main/install/crontab" && chmod 644 /etc/crontab
-
+wget -q -O /usr/bin/notramcpu "https://raw.githubusercontent.com/warouhh/new/main/install/notramcpu" && chmod +x /usr/bin/notramcpu
 clear
 }
 
