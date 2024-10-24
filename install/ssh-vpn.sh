@@ -76,6 +76,7 @@ apt-get remove --purge exim4 -y
 
 #install jq
 apt -y install jq
+apt install sysstat -y
 
 #install shc
 apt -y install shc
