@@ -11,11 +11,9 @@ rm -rf wondershaper
 cd /usr/bin
 wget -O backup "https://raw.githubusercontent.com/warouhh/new/main/menu/backup.sh"
 wget -O restore "https://raw.githubusercontent.com/warouhh/new/main/menu/restore.sh"
-wget -O cleaner "https://raw.githubusercontent.com/warouhh/new/main/install/cleaner.sh"
 wget -O xp "https://raw.githubusercontent.com/warouhh/new/main/install/xp.sh"
 chmod +x /usr/bin/backup
 chmod +x /usr/bin/restore
-chmod +x /usr/bin/cleaner
 chmod +x /usr/bin/xp
 cd
 #if [ ! -f "/etc/cron.d/cleaner_otm" ]; then
