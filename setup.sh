@@ -809,6 +809,7 @@ clear
 #install remove log
 echo "0 5 * * * root reboot" >> /etc/crontab
 echo "* * * * * root clog" >> /etc/crontab
+echo "0 3 * * * root cleaner" >> /etc/crontab
 echo "59 * * * * root pkill 'menu'" >> /etc/crontab
 echo "0 1 * * * root xp" >> /etc/crontab
 echo "*/5 * * * * root notramcpu" >> /etc/crontab
