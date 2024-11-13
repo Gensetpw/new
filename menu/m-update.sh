@@ -18,6 +18,7 @@ echo -e "$COLOR1└────────────────────�
 #hapus menu
 rm -rf restore
 rm -rf m-trgo
+rm -rf m-trgo2
 rm -rf backup
 rm -rf menu
 rm -rf addnoobz
@@ -56,15 +57,20 @@ rm -rf bantwidth
 cd /usr/bin
 rm -rf restore
 rm -rf m-trgo
+rm -rf m-trgo2
 rm -rf backup
 rm -rf menu
 rm -rf addnoobz
 rm -rf cek-noobz
 rm -rf m-noobz
 rm -rf m-vmess2
+rm -rf m-vmess
 rm -rf m-vless2
+rm -rf m-vless
 rm -rf m-trojan2
+rm -rf m-trojan
 rm -rf m-system
+rm -rf m-sshovpn2
 rm -rf m-sshovpn2
 rm -rf m-ssws
 rm -rf running
@@ -121,6 +127,7 @@ res1() {
     
 wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/warouhh/new/main/menu/menu.sh" && chmod +x /usr/bin/menu
 wget -q -O /usr/bin/m-trgo "https://raw.githubusercontent.com/warouhh/new/main/menu/m-trgo.sh" && chmod +x /usr/bin/m-trgo
+wget -q -O /usr/bin/m-trgo2 "https://raw.githubusercontent.com/warouhh/new/main/menu/m-trgo2.sh" && chmod +x /usr/bin/m-trgo2
 wget -q -O /usr/bin/restore "https://raw.githubusercontent.com/warouhh/new/main/menu/restore.sh" && chmod +x /usr/bin/restore
 wget -q -O /usr/bin/backup "https://raw.githubusercontent.com/warouhh/new/main/menu/backup.sh" && chmod +x /usr/bin/backup
 wget -q -O /usr/bin/addnoobz "https://raw.githubusercontent.com/warouhh/new/main/bot/addnoobz.sh" && chmod +x /usr/bin/addnoobz
@@ -131,10 +138,14 @@ wget -q -O /usr/bin/m-bot "https://raw.githubusercontent.com/warouhh/new/main/me
 wget -q -O /usr/bin/update "https://raw.githubusercontent.com/warouhh/new/main/menu/update.sh" && chmod +x /usr/bin/update
 wget -q -O /usr/bin/m-theme "https://raw.githubusercontent.com/warouhh/new/main/menu/m-theme.sh" && chmod +x /usr/bin/m-theme
 wget -q -O /usr/bin/m-vmess2 "https://raw.githubusercontent.com/warouhh/new/main/menu/m-vmess2.sh" && chmod +x /usr/bin/m-vmess2
+wget -q -O /usr/bin/m-vmess "https://raw.githubusercontent.com/warouhh/new/main/menu/m-vmess.sh" && chmod +x /usr/bin/m-vmess
 wget -q -O /usr/bin/m-vless2 "https://raw.githubusercontent.com/warouhh/new/main/menu/m-vless2.sh" && chmod +x /usr/bin/m-vless2
+wget -q -O /usr/bin/m-vless "https://raw.githubusercontent.com/warouhh/new/main/menu/m-vless.sh" && chmod +x /usr/bin/m-vless
 wget -q -O /usr/bin/m-trojan2 "https://raw.githubusercontent.com/warouhh/new/main/menu/m-trojan2.sh" && chmod +x /usr/bin/m-trojan2
+wget -q -O /usr/bin/m-trojan "https://raw.githubusercontent.com/warouhh/new/main/menu/m-trojan.sh" && chmod +x /usr/bin/m-trojan
 wget -q -O /usr/bin/m-system "https://raw.githubusercontent.com/warouhh/new/main/menu/m-system.sh" && chmod +x /usr/bin/m-system
 wget -q -O /usr/bin/m-sshovpn2 "https://raw.githubusercontent.com/warouhh/new/main/menu/m-sshovpn2.sh" && chmod +x /usr/bin/m-sshovpn2
+wget -q -O /usr/bin/m-sshovpn "https://raw.githubusercontent.com/warouhh/new/main/menu/m-sshovpn.sh" && chmod +x /usr/bin/m-sshovpn
 wget -q -O /usr/bin/m-ssws "https://raw.githubusercontent.com/warouhh/new/main/menu/m-ssws.sh" && chmod +x /usr/bin/m-ssws
 wget -q -O /usr/bin/running "https://raw.githubusercontent.com/warouhh/new/main/menu/running.sh" && chmod +x /usr/bin/running
 wget -q -O /usr/bin/m-backup "https://raw.githubusercontent.com/warouhh/new/main/menu/m-backup.sh" && chmod +x /usr/bin/m-backup
@@ -152,11 +163,17 @@ wget -q -O /usr/bin/trialssh "https://raw.githubusercontent.com/warouhh/new/main
 wget -q -O /usr/bin/autocpu "https://raw.githubusercontent.com/warouhh/new/main/install/autocpu.sh" && chmod +x /usr/bin/autocpu
 wget -q -O /usr/bin/bantwidth "https://raw.githubusercontent.com/warouhh/new/main/install/bantwidth" && chmod +x /usr/bin/bantwidth
 chmod +x menu
+chmod +x m-trgo2
+chmod +x m-trgo
 chmod +x m-vmess2
+chmod +x m-vmess
 chmod +x m-vless2
+chmod +x m-vless
 chmod +x m-trojan2
+chmod +x m-trojan
 chmod +x m-system
 chmod +x m-sshovpn2
+chmod +x m-sshovpn
 chmod +x m-ssws
 chmod +x running
 chmod +x m-update
