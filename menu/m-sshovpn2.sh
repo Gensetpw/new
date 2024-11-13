@@ -571,7 +571,7 @@ echo -e "$COLOR1│                                                 │"
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 fi
 echo -e "$COLOR1╭═════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}             ${WH}• RENEW USERS •                    │${NC}$COLOR1$NC"
@@ -587,7 +587,7 @@ read -rp "Select one client [1]: " CLIENT_NUMBER
 else
 read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 if [[ ${CLIENT_NUMBER} == '0' ]]; then
-m-sshovpn
+m-sshovpn2
 fi
 fi
 done
@@ -656,7 +656,7 @@ echo -e "$COLOR1│"
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
 fi
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 }
 function hapus(){
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/ssh")
@@ -672,7 +672,7 @@ echo -e "$COLOR1│                                                 │"
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 fi
 echo -e "$COLOR1╭═════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}             ${WH}• DELETE USERS •                   │${NC}$COLOR1$NC"
@@ -688,7 +688,7 @@ read -rp "Select one client [1]: " CLIENT_NUMBER
 else
 read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 if [[ ${CLIENT_NUMBER} == '0' ]]; then
-m-sshovpn
+m-sshovpn2
 fi
 fi
 done
@@ -725,7 +725,7 @@ echo "$TEXT" > /etc/notiftele
 bash /etc/tele
 fi
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 }
 function cekconfig(){
 ISP=$(cat /etc/xray/isp)
@@ -748,7 +748,7 @@ echo -e "$COLOR1│                                                 │"
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 fi
 echo -e "$COLOR1╭═════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}             ${WH}• USER CONFIG •                    │${NC}$COLOR1$NC"
@@ -764,7 +764,7 @@ read -rp "Select one client [1]: " CLIENT_NUMBER
 else
 read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 if [[ ${CLIENT_NUMBER} == '0' ]]; then
-m-sshovpn
+m-sshovpn2
 fi
 fi
 done
@@ -826,7 +826,7 @@ echo -e "Failure: User $Pengguna Not Exist."
 fi
 sed -i "/^### $Pengguna/d" /etc/xray/ssh
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 }
 function cek(){
 TIMES="10"
@@ -925,7 +925,7 @@ fi
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 }
 function limitssh(){
 cd
@@ -941,7 +941,7 @@ echo ""
 echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 fi
 echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "$COLOR1 ${NC}${COLBG1}    ${WH}⇱ Limit SSH Account ⇲        ${NC} $COLOR1 $NC"
@@ -956,7 +956,7 @@ read -rp "Select one client [1]: " CLIENT_NUMBER
 else
 read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 if [[ ${CLIENT_NUMBER} == '0' ]]; then
-m-sshovpn
+m-sshovpn2
 fi
 fi
 done
@@ -1003,7 +1003,7 @@ echo ""
 echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 }
 clear
 function listssh(){
@@ -1110,7 +1110,7 @@ echo -e "${COLOR1}│ $NC SUCCES GANTI TIME NOTIF LOCK JADI $notif2 MENIT $NC "
 echo -e "$COLOR1╰═══════════════════════════════════════════════╯${NC}"
 fi
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 }
 function lockssh(){
 clear
@@ -1128,7 +1128,7 @@ echo "You have no existing user Lock!"
 echo ""
 echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 fi
 clear
 echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
@@ -1146,11 +1146,11 @@ read -rp "Select one client [1]: " CLIENT_NUMBER
 else
 read -rp "Select one client [1-${NUMBER_OF_CLIENTS}] to Unlock: " CLIENT_NUMBER
 if [[ ${CLIENT_NUMBER} == '0' ]]; then
-m-sshovpn
+m-sshovpn2
 fi
 if [[ ${CLIENT_NUMBER} == 'clear' ]]; then
 rm /etc/xray/sshx/listlock
-m-sshovpn
+m-sshovpn2
 fi
 fi
 done
@@ -1189,7 +1189,7 @@ echo " Status  : Unlocked"
 echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-m-sshovpn
+m-sshovpn2
 }
 clear
 author=$(cat /etc/profil)
@@ -1220,7 +1220,7 @@ case $opt in
 09 | 9) clear ; lockssh ; exit ;;
 10 | 10) clear ; hapuslama ; exit ;;
 00 | 0) clear ; menu ; exit ;;
-X  | 0) clear ; m-sshovpn ;;
+X  | 0) clear ; m-sshovpn2 ;;
 x) exit ;;
-*) echo "Anda salah tekan " ; sleep 1 ; m-sshovpn ;;
+*) echo "Anda salah tekan " ; sleep 1 ; m-sshovpn2 ;;
 esac
