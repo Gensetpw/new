@@ -330,7 +330,7 @@ echo -e "    $COLOR1╰═══════════════════
 #printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " TROJAN-GO   =" "$jumlah_trgo" "ACCOUNT "
 #echo -e "      $COLOR1╰═════════════════════════════════════════════╯${NC}"
 echo -e " $COLOR1╭═════════════════════ • ${WH}LIST MENU${NC}${COLOR1} • ════════════════════╮${NC}"
-echo -e " $COLOR1│$NC ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS    ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}BOT PANEL  ${WH}[${COLOR1}lost${WH}] $COLOR1│${NC}"
+echo -e " $COLOR1│$NC ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS    ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}BOT PANEL  ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"
 echo -e " $COLOR1│$NC ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}VMESS     ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}BOT NOTIF  ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"    
 echo -e " $COLOR1│$NC ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS     ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}UPDATE     ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"   
 echo -e " $COLOR1│$NC ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN    ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}SYSTEM     ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}" 
@@ -462,13 +462,13 @@ echo -e "$COLOR1╰════════════════════�
 echo -e ""
 echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
 case $opt in
-01 | 1) clear ; m-sshovpn ;;
-02 | 2) clear ; m-vmess ;;
-03 | 3) clear ; m-vless ;;
-04 | 4) clear ; m-trojan ;;
+01 | 1) clear ; m-sshovpn2 ;;
+02 | 2) clear ; m-vmess2 ;;
+03 | 3) clear ; m-vless2 ;;
+04 | 4) clear ; m-trojan2 ;;
 05 | 5) clear ; m-noobz ;;
-06 | 6) clear ; m-trgo ;;
-#07 | 7) clear ; m-bot  ;;
+06 | 6) clear ; m-trgo2 ;;
+07 | 7) clear ; m-bot  ;;
 08 | 8) clear ; m-bot2 ;;
 09 | 9) clear ; m-update ;;
 10 | 10) clear ; m-system ;;
