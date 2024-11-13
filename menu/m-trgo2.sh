@@ -138,7 +138,7 @@ echo "Expired  : $exp"
 echo "============================"
 echo -e ""
 read -n 1 -s -r -p "Press any key to back on menu"
-m-trgo
+m-trgo2
 }
 
 function renewtrgo() {
