@@ -150,7 +150,7 @@ exp=$(grep -wE "^#vmg $vmuser" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort 
 uuid=$(grep -wE "^#vmg $vmuser" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
 echo "### $vmuser $exp $uuid" >> /etc/vmess/userQuota
 sed -i "/^#vmg $vmuser $exp/,/^},{/d" /etc/xray/config.json
-sed -i "/^#vm $vmuser $exp/,/^},{/d" /etc/xray/config.json
+sed -i "/^#vmg $vmuser $exp/,/^},{/d" /etc/xray/config.json
 rm /etc/limit/vmess/${vmuser} >/dev/null 2>&1
 systemctl restart xray
 fi
@@ -193,7 +193,7 @@ exp=$(grep -wE "^#vmg $vmuser" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort 
 uuid=$(grep -wE "^#vmg $vmuser" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
 echo "### $vmuser $exp $uuid" >> /etc/vmess/listlock
 sed -i "/^#vmg $vmuser $exp/,/^},{/d" /etc/xray/config.json
-sed -i "/^#vm $vmuser $exp/,/^},{/d" /etc/xray/config.json
+sed -i "/^#vmg $vmuser $exp/,/^},{/d" /etc/xray/config.json
 rm /etc/vmess/${vmuser}login >/dev/null 2>&1
 cat> /etc/cron.d/vmess${vmuser} << EOF
 SHELL=/bin/sh
@@ -229,7 +229,7 @@ exp=$(grep -wE "^#vmg $vmuser" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort 
 uuid=$(grep -wE "^#vmg $vmuser" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
 echo "### $vmuser $exp $uuid" >> /etc/vmess/listlock
 sed -i "/^#vmg $vmuser $exp/,/^},{/d" /etc/xray/config.json
-sed -i "/^#vm $vmuser $exp/,/^},{/d" /etc/xray/config.json
+sed -i "/^#vmg $vmuser $exp/,/^},{/d" /etc/xray/config.json
 rm /etc/vmess/${vmuser}login >/dev/null 2>&1
 systemctl restart xray
 fi
@@ -261,7 +261,7 @@ exp=$(grep -wE "^#vmg $vmuser" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort 
 uuid=$(grep -wE "^#vmg $vmuser" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
 echo "### $vmuser $exp $uuid" >> /etc/vmess/listlock
 sed -i "/^#vmg $vmuser $exp/,/^},{/d" /etc/xray/config.json
-sed -i "/^#vm $vmuser $exp/,/^},{/d" /etc/xray/config.json
+sed -i "/^#vmg $vmuser $exp/,/^},{/d" /etc/xray/config.json
 rm /etc/vmess/${vmuser}login >/dev/null 2>&1
 systemctl restart xray
 fi
