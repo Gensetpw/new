@@ -1068,9 +1068,9 @@ echo -e "$COLOR1╭════════════════════�
 echo -e "$COLOR1│${NC} ${COLBG1}            ${WH}• VMESS USER ONLINE •              ${NC} $COLOR1│ $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-vm=($(cat /etc/xray/config.json | grep "^#vmg" | awk '{print $2}' | sort -u))
+vmdat=($(cat /etc/xray/config.json | grep "^#vmg" | awk '{print $2}' | sort -u))
 echo -n >/tmp/vm
-for db1 in ${vm[@]}; do
+for db1 in ${vmdat[@]}; do
 logvm=$(cat /var/log/xray/access.log | grep -w "email: ${db1}" | tail -n 100)
 while read a; do
 if [[ -n ${a} ]]; then
@@ -1093,7 +1093,7 @@ fi
 done <<<"${logvm}"
 done
 if [[ ${splvm} != "" ]]; then
-for vmuser in ${vm[@]}; do
+for vmuser in ${vmdat[@]}; do
 vmhas=$(cat /tmp/vm | grep -w "${vmuser}" | wc -l)
 tess=0
 if [[ ${vmhas} -gt $tess ]]; then
@@ -1101,10 +1101,12 @@ byt=$(cat /etc/limit/vmess/${vmuser})
 gb=$(convert ${byt})
 lim=$(cat /etc/vmess/${vmuser})
 lim2=$(convert ${lim})
-echo -e "$COLOR1${NC} USERNAME : \033[0;33m$vmuser"
-echo -e "$COLOR1${NC} IP LOGIN : \033[0;33m$vmhas"
-echo -e "$COLOR1${NC} USAGE : \033[0;33m$gb"
-echo -e "$COLOR1${NC} LIMIT : \033[0;33m$lim2"
+vmip=$(cat /etc/vmess/${vmuser}IP)
+lastlogin=$(cat /var/log/xray/access.log | grep -w "$user" | tail -n 500 | cut -d " " -f 2 | tail -1)
+printf "  %-13s %-7s %-8s %2s\n" "  USERNAME : ${vmuser}" | lolcat
+printf "  %-13s %-7s %-8s %2s\n" "  LOGIN    : $lastlogin" | lolcat 
+printf "  %-13s %-7s %-8s %2s\n" "  LIMIT GB : ${gb}/${lim2}" | lolcat  
+printf "  %-13s %-7s %-8s %2s\n" "  LIMIT IP : $vmhas/$vmip" | lolcat;
 echo -e ""
 fi
 done
