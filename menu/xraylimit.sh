@@ -302,8 +302,8 @@ if [[ ${spll} != "" ]]; then
 for vlus in ${vldat[@]}; do
 vlsss=$(cat /tmp/vl | grep -w "${vlus}" | wc -l)
 vlsss2=$(cat /tmp/vl | grep -w "${vlus}" | cut -d ' ' -f 2-8 | nl -s '. ' | while read line; do printf "%-20s\n" "$line"; done )
-sdf=$(ls "/etc/vless" | grep -w "${vlus}IP")
-if [[ -z ${sdf} ]]; then
+vlsde=$(ls "/etc/vless" | grep -w "${vlus}IP")
+if [[ -z ${vlsde} ]]; then
 vlip="0"
 else
 vlip=$(cat /etc/vless/${vlus}IP)
@@ -488,8 +488,8 @@ if [[ ${restr} != "" ]]; then
 for usrtr in ${trda[@]}; do
 trip=$(cat /tmp/tr | grep -w "${usrtr}" | wc -l)
 trip2=$(cat /tmp/tr | grep -w "${usrtr}" | cut -d ' ' -f 2-8 | nl -s '. ' | while read line; do printf "%-20s\n" "$line"; done )
-sdf=$(ls "/etc/trojan" | grep -w "${usrtr}IP")
-if [[ -z ${sdf} ]]; then
+trsde=$(ls "/etc/trojan" | grep -w "${usrtr}IP")
+if [[ -z ${trsde} ]]; then
 sadsde="0"
 else
 sadsde=$(cat /etc/trojan/${usrtr}IP)
