@@ -1083,9 +1083,9 @@ echo -e "$COLOR1╭════════════════════�
 echo -e "$COLOR1│${NC} ${COLBG1}            ${WH}• VMESS USER ONLINE •              ${NC} $COLOR1│ $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-vm=($(cat /etc/xray/config.json | grep "^#vmg" | awk '{print $2}' | sort -u))
+vmdat=($(cat /etc/xray/config.json | grep "^#vmg" | awk '{print $2}' | sort -u))
 echo -n >/tmp/vm
-for db1 in ${vm[@]}; do
+for db1 in ${vmdat[@]}; do
 logvm=$(cat /var/log/xray/access.log | grep -w "email: ${db1}" | tail -n 100)
 while read a; do
 if [[ -n ${a} ]]; then
@@ -1108,7 +1108,7 @@ fi
 done <<<"${logvm}"
 done
 if [[ ${splvm} != "" ]]; then
-for vmuser in ${vm[@]}; do
+for vmuser in ${vmdat[@]}; do
 vmhas=$(cat /tmp/vm | grep -w "${vmuser}" | wc -l)
 tess=0
 if [[ ${vmhas} -gt $tess ]]; then
