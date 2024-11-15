@@ -819,10 +819,10 @@ echo -e "$COLOR1╭════════════════════�
 echo -e "$COLOR1│${NC} ${COLBG1}            ${WH}• VLESS USER ONLINE •              ${NC} $COLOR1│ $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═════════════════════════════════════════════════╮${NC}"
-vm=($(cat /etc/xray/config.json | grep "^#vlg" | awk '{print $2}' | sort -u))
-echo -n >/tmp/vm
-for db1 in ${vm[@]}; do
-logvm=$(cat /var/log/xray/access.log | grep -w "email: ${db1}" | tail -n 100)
+vldat=($(cat /etc/xray/config.json | grep "^#vlg" | awk '{print $2}' | sort -u))
+echo -n >/tmp/vl
+for db1 in ${vldat[@]}; do
+logvl=$(cat /var/log/xray/access.log | grep -w "email: ${db1}" | tail -n 100)
 while read a; do
 if [[ -n ${a} ]]; then
 set -- ${a}
@@ -834,28 +834,30 @@ now=$(tim2sec ${timenow})
 client=$(tim2sec ${inu})
 nowt=$(((${now} - ${client})))
 if [[ ${nowt} -lt 40 ]]; then
-cat /tmp/vm | grep -w "${ina}" | grep -w "${enu}" >/dev/null
+cat /tmp/vl | grep -w "${ina}" | grep -w "${enu}" >/dev/null
 if [[ $? -eq 1 ]]; then
-echo "${ina} ${inu} WIB : ${enu}" >>/tmp/vm
-splvm=$(cat /tmp/vm)
+echo "${ina} ${inu} WIB : ${enu}" >>/tmp/vl
+spll=$(cat /tmp/vl)
 fi
 fi
 fi
-done <<<"${logvm}"
+done <<<"${logvl}"
 done
-if [[ ${splvm} != "" ]]; then
-for vmuser in ${vm[@]}; do
-vmhas=$(cat /tmp/vm | grep -w "${vmuser}" | wc -l)
+if [[ ${spll} != "" ]]; then
+for vlus in ${vldat[@]}; do
+vlsss=$(cat /tmp/vl | grep -w "${vlus}" | wc -l)
 tess=0
-if [[ ${vmhas} -gt $tess ]]; then
-byt=$(cat /etc/limit/vless/${vmuser})
+if [[ ${vlsss} -gt $tess ]]; then
+byt=$(cat /etc/limit/vless/${vlus})
 gb=$(convert ${byt})
-lim=$(cat /etc/vless/${vmuser})
+lim=$(cat /etc/vless/${vlus})
 lim2=$(convert ${lim})
-echo -e "$COLOR1${NC} USERNAME : \033[0;33m$vmuser"
-echo -e "$COLOR1${NC} IP LOGIN : \033[0;33m$vmhas"
-echo -e "$COLOR1${NC} USAGE : \033[0;33m$gb"
-echo -e "$COLOR1${NC} LIMIT : \033[0;33m$lim2"
+vlip=$(cat /etc/vless/${vlus}IP)
+lastlogin=$(cat /var/log/xray/access.log | grep -w "$user" | tail -n 500 | cut -d " " -f 2 | tail -1)
+printf "  %-13s %-7s %-8s %2s\n" "  USERNAME : ${vlus}" | lolcat
+printf "  %-13s %-7s %-8s %2s\n" "  LOGIN    : $lastlogin" | lolcat 
+printf "  %-13s %-7s %-8s %2s\n" "  LIMIT GB : ${gb}/${lim2}" | lolcat  
+printf "  %-13s %-7s %-8s %2s\n" "  LIMIT IP : $vlsss/$vlip" | lolcat;
 echo -e ""
 fi
 done
