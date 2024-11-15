@@ -91,9 +91,9 @@ cd
 if [[ ! -e /etc/limit/vmess ]]; then
 mkdir -p /etc/limit/vmess
 fi
-vm=($(cat /etc/xray/config.json | grep "^#vmg" | awk '{print $2}' | sort -u))
+vmdat=($(cat /etc/xray/config.json | grep "^#vmg" | awk '{print $2}' | sort -u))
 echo -n >/tmp/vm
-for db1 in ${vm[@]}; do
+for db1 in ${vmdat[@]}; do
 logvm=$(cat /var/log/xray/access.log | grep -w "email: ${db1}" | tail -n 150)
 while read a; do
 if [[ -n ${a} ]]; then
@@ -116,7 +116,7 @@ fi
 done <<<"${logvm}"
 done
 if [[ ${splvm} != "" ]]; then
-for vmuser in ${vm[@]}; do
+for vmuser in ${vmdat[@]}; do
 vmhas=$(cat /tmp/vm | grep -w "${vmuser}" | wc -l)
 vmhas2=$(cat /tmp/vm | grep -w "${vmuser}" | cut -d ' ' -f 2-8 | nl -s '. ' | while read line; do printf "%-20s\n" "$line"; done )
 vmsde=$(ls "/etc/vmess" | grep -w "${vmuser}IP")
