@@ -304,9 +304,9 @@ vlsss=$(cat /tmp/vl | grep -w "${vlus}" | wc -l)
 vlsss2=$(cat /tmp/vl | grep -w "${vlus}" | cut -d ' ' -f 2-8 | nl -s '. ' | while read line; do printf "%-20s\n" "$line"; done )
 sdf=$(ls "/etc/vless" | grep -w "${vlus}IP")
 if [[ -z ${sdf} ]]; then
-vmip="0"
+vlip="0"
 else
-vmip=$(cat /etc/vless/${vlus}IP)
+vlip=$(cat /etc/vless/${vlus}IP)
 fi
 if [[ ${vlsss} -gt "0" ]]; then
 downlink=$(xray api stats --server=127.0.0.1:10085 -name "user>>>${vlus}>>>traffic>>>downlink" | grep -w "value" | awk '{print $2}' | cut -d '"' -f2)
@@ -340,7 +340,7 @@ rm /etc/limit/vless/${vlus} >/dev/null 2>&1
 systemctl restart xray >/dev/null 2>&1
 fi
 fi
-if [[ ${vlsss} -gt $vmip ]]; then
+if [[ ${vlsss} -gt $vlip ]]; then
 byt=$(cat /etc/limit/vless/$vlus)
 gb=$(convert ${byt})
 echo "$vlus ${vlsss}" >> /etc/vless/${vlus}login
