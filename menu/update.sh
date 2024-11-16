@@ -4,6 +4,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
 echo -e " [INFO] Downloading File"
 sleep 2
+wget -q -O /usr/bin/m-tcp "https://raw.githubusercontent.com/warouhh/new/main/menu/m-tcp.sh" && chmod +x /usr/bin/m-tcp
 wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/warouhh/new/main/menu/menu.sh" && chmod +x /usr/bin/menu
 wget -q -O /usr/bin/m-trgo2 "https://raw.githubusercontent.com/warouhh/new/main/menu/m-trgo2.sh" && chmod +x /usr/bin/m-trgo2
 wget -q -O /usr/bin/m-trgo "https://raw.githubusercontent.com/warouhh/new/main/menu/m-trgo.sh" && chmod +x /usr/bin/m-trgo
