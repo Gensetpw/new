@@ -282,6 +282,10 @@ wget https://raw.githubusercontent.com/warouhh/new/main/install/lolcat.sh &&  ch
 #swapon /swapfile >/dev/null 2>&1
 #sed -i '$ i\/swapfile      swap swap   defaults    0 0' /etc/fstab
 
+# > Singkronisasi jam
+chronyd -q 'server 0.id.pool.ntp.org iburst'
+chronyc sourcestats -v
+chronyc tracking -v
 
 # install fail2ban
 apt -y install fail2ban
