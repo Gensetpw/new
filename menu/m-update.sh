@@ -60,6 +60,7 @@ rm -rf m-trgo
 rm -rf m-trgo2
 rm -rf backup
 rm -rf menu
+rm -rf m-tcp
 rm -rf addnoobz
 rm -rf cek-noobz
 rm -rf m-noobz
@@ -126,6 +127,7 @@ fun_bar() {
 res1() {
     
 wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/warouhh/new/main/menu/menu.sh" && chmod +x /usr/bin/menu
+wget -q -O /usr/bin/m-tcp "https://raw.githubusercontent.com/warouhh/new/main/menu/m-tcp.sh" && chmod +x /usr/bin/m-tcp
 wget -q -O /usr/bin/m-trgo "https://raw.githubusercontent.com/warouhh/new/main/menu/m-trgo.sh" && chmod +x /usr/bin/m-trgo
 wget -q -O /usr/bin/m-trgo2 "https://raw.githubusercontent.com/warouhh/new/main/menu/m-trgo2.sh" && chmod +x /usr/bin/m-trgo2
 wget -q -O /usr/bin/restore "https://raw.githubusercontent.com/warouhh/new/main/menu/restore.sh" && chmod +x /usr/bin/restore
@@ -163,6 +165,7 @@ wget -q -O /usr/bin/trialssh "https://raw.githubusercontent.com/warouhh/new/main
 wget -q -O /usr/bin/autocpu "https://raw.githubusercontent.com/warouhh/new/main/install/autocpu.sh" && chmod +x /usr/bin/autocpu
 wget -q -O /usr/bin/bantwidth "https://raw.githubusercontent.com/warouhh/new/main/install/bantwidth" && chmod +x /usr/bin/bantwidth
 chmod +x menu
+chmod +x m-tcp
 chmod +x m-trgo2
 chmod +x m-trgo
 chmod +x m-vmess2
