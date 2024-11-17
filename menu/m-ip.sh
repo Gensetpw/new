@@ -5,7 +5,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/awanklod/izin_new/main/ip"
+data_ip="https://raw.githubusercontent.com/sotgen/izin_new/main/ip"
 checking_sc() {
   useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
@@ -31,7 +31,7 @@ Repo1="https://raw.githubusercontent.com/valkry7/Regist/MONSTER/"
 export MYIP=$( curl -s https://ipinfo.io/ip/ )
 SELLER=$(curl -sS ${Repo1}ip | grep $MYIP | awk '{print $2}')
 Exp100=$(curl -sS ${Repo1}ip | grep $MYIP | awk '{print $3}')
-data_ip="https://raw.githubusercontent.com/awanklod/izin_new/main/ip"
+data_ip="https://raw.githubusercontent.com/sotgen/izin_new/main/ip"
 d2=$(date -d "$date_list" +"+%s")
 d1=$(date -d "$Exp" +"+%s")
 dayleft=$(( ($d1 - $d2) / 86400 ))
@@ -159,8 +159,8 @@ curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$T
 
 del-ip() {
 TIMES="10"
-CHATID="5808979739"
-KEY="6611280645:AAHnxzRfG79ulaol1kVgw4Sj1qZplQHY1hs"
+CHATID="1170565452"
+KEY="7312342618:AAEMCWrjFlrJqRs9atEvt_-7pM7R9dCoKuA"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 
     rm -rf /root/ipvps
@@ -230,8 +230,8 @@ curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$T
 
 renew-ip() {
 TIMES="10"
-CHATID="5808979739"
-KEY="6611280645:AAHnxzRfG79ulaol1kVgw4Sj1qZplQHY1hs"
+CHATID="1170565452"
+KEY="7312342618:AAEMCWrjFlrJqRs9atEvt_-7pM7R9dCoKuA"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 
     rm -rf /root/ipvps
