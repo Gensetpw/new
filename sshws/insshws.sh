@@ -1,6 +1,6 @@
 #!/bin/bash
 #installer Websocker tunneling 
-url="https://raw.githubusercontent.com/warouhh/new/main"
+url="https://raw.githubusercontent.com/Gensetpw/new/main"
 cd
 
 #Install Script Websocket-SSH Python
