@@ -1,6 +1,6 @@
 #!/bin/bash
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
-MYIP=$(wget -qO- ifconfig.me)
+MYIP=$(wget -qO- ipv4.icanhazip.com)
 colornow=$(cat /etc/rmbl/theme/color.conf)
 export NC="\e[0m"
 export yl='\033[0;33m';
@@ -16,16 +16,16 @@ author=$(cat /etc/profil)
 DAY=$(date +%A)
 DATE=$(date +%m/%d/%Y)
 DATE2=$(date -R | cut -d " " -f -5)
-MYIP=$(wget -qO- ifconfig.me)
-Isadmin=$(curl -sS https://raw.githubusercontent.com/sotgen/izin_new/main/ip | grep $MYIP | awk '{print $5}')
-Exp2=$(curl -sS https://raw.githubusercontent.com/sotgen/izin_new/main/ip | grep $MYIP | awk '{print $3}')
+MYIP=$(wget -qO- ipv4.icanhazip.com)
+Isadmin=$(curl -sS https://raw.githubusercontent.com/awanklod/izin_new/main/ip | grep $MYIP | awk '{print $5}')
+Exp2=$(curl -sS https://raw.githubusercontent.com/awanklod/izin_new/main/ip | grep $MYIP | awk '{print $3}')
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
-Name=$(curl -sS https://raw.githubusercontent.com/sotgen/izin_new/main/ip | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/awanklod/izin_new/main/ip | grep $MYIP | awk '{print $2}')
 ipsaya=$(wget -qO- ifconfig.me)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/sotgen/izin_new/main/ip"
+data_ip="https://raw.githubusercontent.com/awanklod/izin_new/main/ip"
 checking_sc() {
 useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
 if [[ $date_list < $useexp ]]; then
@@ -86,10 +86,10 @@ CORE=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
 cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
 cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
 cpu_usage+=" %"
+# Download
 vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
-vnstat -i ${vnstat_profile} >/etc/t1
+vnstat -i ${vnstat_profile} >/root/t1
 bulan=$(date +%b)
-tahun=$(date +%y)
 today=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
 todayd=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
 today_v=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $9}')
@@ -97,38 +97,39 @@ today_rx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $2}')
 today_rxv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $3}')
 today_tx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $5}')
 today_txv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $6}')
-if [ "$(grep -wc ${bulan} /etc/t1)" != '0' ]; then
-bulan=$(date +%b)
-month=$(vnstat -i ${vnstat_profile} | grep "$bulan ,$tahun" | awk '{print $9}')
-month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan ,$tahun" | awk '{print $10}')
-month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan ,$tahun" | awk '{print $3}')
-month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan ,$tahun" | awk '{print $4}')
-month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan ,$tahun" | awk '{print $6}')
-month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan ,$tahun" | awk '{print $7}')
+if [ "$(grep -wc ${bulan} /root/t1)" != '0' ]; then
+    bulan=$(date +%b)
+    month=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $9}')
+    month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $10}')
+    month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $3}')
+    month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $4}')
+    month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $6}')
+    month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $7}')
 else
-bulan2=$(date +%Y-%m)
-month=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $8}')
-month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $9}')
-month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $2}')
-month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $3}')
-month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $5}')
-month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $6}')
+    bulan=$(date +%Y-%m)
+    month=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $8}')
+    month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $9}')
+    month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $2}')
+    month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $3}')
+    month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $5}')
+    month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $6}')
 fi
-if [ "$(grep -wc yesterday /etc/t1)" != '0' ]; then
-yesterday=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $8}')
-yesterday_v=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $9}')
-yesterday_rx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $2}')
-yesterday_rxv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $3}')
-yesterday_tx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $5}')
-yesterday_txv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $6}')
+if [ "$(grep -wc yesterday /root/t1)" != '0' ]; then
+    yesterday=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $8}')
+    yesterday_v=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $9}')
+    yesterday_rx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $2}')
+    yesterday_rxv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $3}')
+    yesterday_tx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $5}')
+    yesterday_txv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $6}')
 else
-yesterday=NULL
-yesterday_v=NULL
-yesterday_rx=NULL
-yesterday_rxv=NULL
-yesterday_tx=NULL
-yesterday_txv=NULL
+    yesterday=NULL
+    yesterday_v=NULL
+    yesterday_rx=NULL
+    yesterday_rxv=NULL
+    yesterday_tx=NULL
+    yesterday_txv=NULL
 fi
+
 ssh_ws=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
 status_ws="${COLOR1}ON${NC}"
@@ -223,7 +224,7 @@ jumlah_trgo=$(grep -c -E "^### " "/etc/trojan-go/trgo")
 #else
 #mkdir /etc/github
 #echo "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" > /etc/github/api
-#echo "gensetpw@gmail.com" > /etc/github/email
+#echo "vpnrmbl@gmail.com" > /etc/github/email
 #echo "RMBL-VPN" > /etc/github/username
 #m-ip
 #fi
@@ -300,44 +301,45 @@ menu
 clear
 clear && clear && clear
 clear;clear;clear
-echo -e " $COLOR1╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " $COLOR1│${NC} ${COLBG1}                ${WH} • CLOUDVPN TUNNELING •                 ${NC} $COLOR1│ $NC"
-echo -e " $COLOR1╰══════════════════════════════════════════════════════════╯${NC}"
-echo -e " $COLOR1╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ OS            ${COLOR1}: ${WH}$MODEL2${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ RAM           ${COLOR1}: ${WH}$tram / $uram MB${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ DATE          ${COLOR1}: ${WH}$DATE2 WIB${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ UPTIME        ${COLOR1}: ${WH}$uphours $upminutes $uptimecek"
-#echo -e " $COLOR1│$NC${WH} ❈ TIME          ${COLOR1}: ${WH}$TIMEZONE${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ ISP           ${COLOR1}: ${WH}$ISP${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ City          ${COLOR1}: ${WH}$CITY${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ IP VPS        ${COLOR1}: ${WH}$MYIP${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ DOMAIN        ${COLOR1}: ${WH}$(cat /etc/xray/domain)"
-echo -e " $COLOR1│$NC${WH} ❈ NSDomain      ${COLOR1}: ${WH}$(cat /etc/xray/dns)"
-echo -e " $COLOR1╰══════════════════════════════════════════════════════════╯${NC}"
-echo -e "    $COLOR1╭═════════════════ • ${NC}${WH}STATUS SERVER${NC}${COLOR1} • ═══════════════╮${NC}"
-echo -e "     ${WH} SSH WS : ${status_ws} ${WH} XRAY : ${status_xray} ${WH} NGINX : ${status_nginx} ${WH} DROPBEAR : ${status_beruangjatuh}$NC"
-echo -e "      ${WH} UDP CUSTOM : ${status_udp} ${WH} NOOBZVPNS : ${stat_noobz} ${WH} TROJAN-GO : ${stat_trgo} ${NC}"
-echo -e "    $COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-#echo -e "        $COLOR1╭════════════════════════════════════════════╮${NC}"
-#echo -e "                 $COLOR1$NC${WH}    LIST ACCOUNT PREMIUM ${NC}"
-#echo -e "        $COLOR1      ═════════════════════════════════ ${NC}"
-#printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " SSH/OPVPN   =" "$total_ssh" "ACCOUNT "
-#printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " VMESS/WS    =" "$vmess" "ACCOUNT "
-#printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " VLESS/WS    =" "$vless" "ACCOUNT "
-#printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " TROJAN/GRPC =" "$trtls" "ACCOUNT "
-#printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " NOOBZVPNS   =" "$jumlah_noobz" "ACCOUNT "
-#printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " TROJAN-GO   =" "$jumlah_trgo" "ACCOUNT "
-#echo -e "      $COLOR1╰═════════════════════════════════════════════╯${NC}"
-echo -e " $COLOR1╭═════════════════════ • ${WH}LIST MENU${NC}${COLOR1} • ════════════════════╮${NC}"
-echo -e " $COLOR1│$NC ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS    ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}BOT PANEL  ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"
-echo -e " $COLOR1│$NC ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}VMESS     ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}BOT NOTIF  ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"    
-echo -e " $COLOR1│$NC ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS     ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}UPDATE     ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"   
-echo -e " $COLOR1│$NC ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN    ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}SYSTEM     ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}" 
-echo -e " $COLOR1│$NC ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}NOOBZVPNS ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}11${WH}]${NC} ${COLOR1}• ${WH}BACKUP     ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}" 
-echo -e " $COLOR1│$NC ${WH}[${COLOR1}06${WH}]${NC} ${COLOR1}• ${WH}TROJAN-GO ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}12${WH}]${NC} ${COLOR1}• ${WH}REBOOT     ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}" 
-echo -e " $COLOR1│$NC ${WH}[${COLOR1}22${WH}]${NC} ${COLOR1}• ${WH}RUNNING   ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}23${WH}]${NC} ${COLOR1}• ${WH}RESTART    ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"
-echo -e " $COLOR1╰════════════════════════════════════════════════════════╯${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1 ${NC} ${COLBG1}               ${WH}• VPS PANEL MENU •              ${NC} $COLOR1 $NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│$NC${WH} ❄️ OS            ${COLOR1}: ${WH}$MODEL2${NC}"
+#echo -e "$COLOR1│$NC${WH} ❄️ RAM           ${COLOR1}: ${WH}$tram / $uram MB${NC}"
+echo -e "$COLOR1│$NC${WH} ❄️ DATE          ${COLOR1}: ${WH}$DATE2 WIB${NC}"
+echo -e "$COLOR1│$NC${WH} ❄️ UPTIME        ${COLOR1}: ${WH}$uphours $upminutes $uptimecek"
+#echo -e " $COLOR1│$NC${WH} ❄️ TIME          ${COLOR1}: ${WH}$TIMEZONE${NC}"
+echo -e "$COLOR1│$NC${WH} ❄️ ISP           ${COLOR1}: ${WH}$ISP${NC}"
+echo -e "$COLOR1│$NC${WH} ❄️ City          ${COLOR1}: ${WH}$CITY${NC}"
+echo -e "$COLOR1│$NC${WH} ❄️ IP VPS        ${COLOR1}: ${WH}$MYIP${NC}"
+echo -e "$COLOR1│$NC${WH} ❄️ DOMAIN        ${COLOR1}: ${WH}$(cat /etc/xray/domain)"
+echo -e "$COLOR1│$NC${WH} ❄️ NSDomain      ${COLOR1}: ${WH}$(cat /etc/xray/dns)"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+#echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+#echo -e "$COLOR1 $NC ${WH}[ NGINX    : ${status_ws} ${WH}]  ${WH}[ XRAY : ${status_xray} ${WH}]$NC"
+#echo -e "$COLOR1 $NC ${WH}[ DROPBEAR : ${status_beruangjatuh} ${WH}]  ${WH}[ UDPC : ${status_udp} ${WH}]$NC"
+#echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1 $NC ${WH}[ NGINX    : ${status_ws} ${WH}]  ${WH}[ XRAY : ${status_xray} ${WH}] ${WH} USAGE CPU : ${cpu_usage} $NC"
+echo -e "$COLOR1 $NC ${WH}[ DROPBEAR : ${status_beruangjatuh} ${WH}]  ${WH}[ UDPC : ${status_udp} ${WH}] ${WH} USAGE RAM : ${uram} $NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1 ${COLOR1}Traffic${NC}      ${COLOR1}Today       Yesterday       Month   ${NC}"
+echo -e "$COLOR1 ${WH}Download${NC}   ${WH}$today_tx $today_txv     $yesterday_tx $yesterday_txv    $month_tx $month_txv   ${NC}"
+echo -e "$COLOR1 ${WH}Upload${NC}     ${WH}$today_rx $today_rxv     $yesterday_rx $yesterday_rxv    $month_rx $month_rxv   ${NC}"
+echo -e "$COLOR1 ${COLOR1}Total${NC}    ${COLOR1}  $todayd $today_v     $yesterday $yesterday_v    $month $month_v  ${NC} "
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "  ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSHWS    ${WH}[${COLOR1}${status_ws}${WH}]   ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}BOT PANEL ${WH}[${COLOR1}Menu${WH}]  $COLOR1 $NC"   
+echo -e "  ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}VMESS    ${WH}[${COLOR1}${status_xray}${WH}]   ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}BOT NOTIF ${WH}[${COLOR1}Menu${WH}]  $COLOR1 $NC"  
+echo -e "  ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS    ${WH}[${COLOR1}${status_xray}${WH}]   ${WH}[${COLOR1}11${WH}]${NC} ${COLOR1}• ${WH}UPDATE    ${WH}[${COLOR1}Menu${WH}]  $COLOR1 $NC"  
+echo -e "  ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN   ${WH}[${COLOR1}${status_xray}${WH}]   ${WH}[${COLOR1}12${WH}]${NC} ${COLOR1}• ${WH}SYSTEM    ${WH}[${COLOR1}Menu${WH}]  $COLOR1 $NC"  
+echo -e "  ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}NOOBZ    ${WH}[${COLOR1}${stat_noobz}${WH}]   ${WH}[${COLOR1}13${WH}]${NC} ${COLOR1}• ${WH}BACKUP    ${WH}[${COLOR1}Menu${WH}]  $COLOR1 $NC"
+echo -e "  ${WH}[${COLOR1}06${WH}]${NC} ${COLOR1}• ${WH}TRJN-GO  ${WH}[${COLOR1}${stat_trgo}${WH}]   ${WH}[${COLOR1}14${WH}]${NC} ${COLOR1}• ${WH}RESTART   ${WH}[${COLOR1}Menu${WH}]  $COLOR1 $NC"
+echo -e "  ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}RUNNING  ${WH}[${COLOR1}${status_xray}${WH}]   ${WH}[${COLOR1}15${WH}]${NC} ${COLOR1}• ${WH}REBOOT    ${WH}[${COLOR1}Menu${WH}]  $COLOR1 $NC"
+echo -e "  ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}CEK Net  ${WH}[${COLOR1}${status_xray}${WH}]   ${WH}[${COLOR1}16${WH}]${NC} ${COLOR1}• ${WH}PASSWORD  ${WH}[${COLOR1}Menu${WH}]  $COLOR1 $NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 if [ "$Isadmin" = "ON" ]; then
 #echo -e "$COLOR1╭════════════════════ • ${WH}PANEL ADMIN VIP${NC}${COLOR1} • ════════════════╮${NC}"
 #echo -e "$COLOR1│  ${WH}[${COLOR1}13${WH}]${NC} ${COLOR1}• ${WH}RESELLER IP ${WH}[${COLOR1}MENU${WH}] $COLOR1 $NC"
@@ -348,10 +350,11 @@ else
 #ressee="menu"
 bottt="menu"
 fi
-echo -e "$COLOR1╭═════════════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│$NC  ${WH}Total    $COLOR1│${NC}     ${WH}Today       ${WH}Yesterday       ${WH}Month         ${NC}"
-echo -e "$COLOR1│$NC ${WH}Bantwidth $COLOR1│${NC}   ${WH}$today_tx $today_txv     ${WH}$yesterday_tx $yesterday_txv      ${WH}$month_tx $month_txv$COLOR1${NC}"
-echo -e "$COLOR1╰═════════════════════════════════════════════════════════╯${NC}"
+#echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+#echo -e "$COLOR1│$NC ${WH}Today     : $ttoday   
+#echo -e "$COLOR1│$NC ${WH}Yesterday : $tyest"
+#echo -e "$COLOR1│$NC ${WH}Monthly   : $tmon"
+#echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 DATE=$(date +'%Y-%m-%d')
 datediff() {
 d1=$(date -d "$1" +%s)
@@ -453,12 +456,12 @@ wget https://satantech.serv00.net/arthepat/menu/install-up.sh &> /dev/null
 chmod +x install_up.sh
 ./install_up.sh
 }
-echo -e "$COLOR1╭═════════════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│$NC ${WH} ❈ Versi   ${NC}: ${WH}$(cat /opt/.ver) Version${NC}$COLOR1"
-echo -e "$COLOR1│$NC ${WH} ❈ Client ${NC} : ${WH}$author${NC}"
-echo -e "$COLOR1│$NC ${WH} ❈ Durasi ${NC} : ${WH}$certificate hari${NC}$COLOR1"
-echo -e "$COLOR1│$NC ${WH} ❈ Expiry ${NC} : ${WH}$Exp2 $sts ${NC}$COLOR1"
-echo -e "$COLOR1╰═════════════════════════════════════════════════════════╯${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│ ${WH} ❄️ Versi   ${NC}: ${WH}$(cat /opt/.ver) Version${NC}$COLOR1"
+echo -e "$COLOR1│ ${WH} ❄️ Client ${NC} : ${WH}$author${NC}"
+echo -e "$COLOR1│ ${WH} ❄️ Durasi ${NC} : ${WH}$certificate hari${NC}$COLOR1" 
+echo -e "$COLOR1│ ${WH} ❄️ Expiry ${NC} : ${WH}$Exp2 $sts ${NC}$COLOR1" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e ""
 echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
 case $opt in
@@ -468,16 +471,16 @@ case $opt in
 04 | 4) clear ; m-trojan2 ;;
 05 | 5) clear ; m-noobz ;;
 06 | 6) clear ; m-trgo2 ;;
-07 | 7) clear ; m-bot  ;;
-08 | 8) clear ; m-bot2 ;;
-09 | 9) clear ; m-update ;;
-10 | 10) clear ; m-system ;;
-11 | 11) clear ; m-backup;;
-12 | 12) clear ; reboot ;;
-#13 | 13) clear ; $ressee ;;
-#14 | 14) clear ; key ;;
-22 | 22) clear ; running;;
-23 | 23) clear ; restartservice ;;
+07 | 7) clear ; running  ;;
+08 | 8) clear ; media ;;
+09 | 9) clear ; m-bot ;;
+10 | 10) clear ; m-bot2 ;;
+11 | 11) clear ; m-update ;;
+12 | 12) clear ; m-system ;;
+13 | 13) clear ; m-backup ;;
+14 | 14) clear ; restartservice ;;
+15 | 22) clear ; reboot;;
+16 | 23) clear ; passwd ;;
 89 | 89) clear ; bannner ;;
 88 | 88) clear ; new ;;
 77 | 77) clear ; newx ;;
